@@ -1,3 +1,19 @@
 .element__favorite {
-  margin-right: 18px;
+    background-image: url('../../../images/favorite.svg');
+    height: 18.13px;
+    width: 20.76px;
+    background-color: #fff;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 0;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    transition: .2s linear;
+    background-position: center;
+    margin-right: 18px;
+}
+
+.element__favorite:hover {
+  opacity: .6;
 }

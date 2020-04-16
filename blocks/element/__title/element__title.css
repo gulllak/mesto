@@ -4,4 +4,6 @@
   line-height: 29px;
   color: #000000;
   margin: 0 0 0 21px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

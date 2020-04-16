@@ -6,6 +6,8 @@
   margin: 0 0 16px;
   max-width: 295px;
   white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 1024px) {
