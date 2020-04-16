@@ -1,0 +1,15 @@
+@import url("../popup/__container/popup__container.css");
+@import url("../popup/__close/popup__close.css");
+@import url("../popup/__heading/popup__heading.css");
+@import url("../popup/__username/popup__username.css");
+@import url("../popup/__signature/popup__signature.css");
+@import url("../popup/__btn-save/popup__btn-save.css");
+
+.popup {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, .5);
+  min-height: 100%;
+  position: fixed;
+  display: none;
+}

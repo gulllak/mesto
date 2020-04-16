@@ -1,0 +1,27 @@
+@import url("../footer/__signature/footer__signature.css");
+
+.footer {
+  margin: 66px auto 0;
+  padding-bottom: 66px;
+  max-width: calc(100vw - 31.09375%);
+}
+
+@media screen and (min-width: 1281px) {
+  .footer {
+    max-width: 882px;
+  }
+}
+
+@media screen and (max-width: 845px) {
+  .footer {
+    max-width: 582px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    margin: 48px auto 0;
+    padding-bottom: 36px;
+    max-width: 282px;
+  }
+}

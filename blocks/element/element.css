@@ -1,0 +1,11 @@
+@import url("../element/__image/element__image.css");
+@import url("../element/__content-footer/element__content-footer.css");
+@import url("../element/__title/element__title.css");
+@import url("../element/__favorite/element__favorite.css");
+
+.element {
+  font-size: 0;
+  max-height: 100%;
+  border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+}

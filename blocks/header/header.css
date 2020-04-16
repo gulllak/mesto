@@ -1,0 +1,29 @@
+@import url("../header/__logo/header__logo.css");
+
+.header {
+  max-width: calc(100vw - 31.09375%);
+  margin: 0 auto;
+  padding-top: 45px;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  font-size: 0;
+}
+
+@media screen and (min-width: 1281px) {
+  .header {
+    max-width: 882px;
+  }
+}
+
+@media screen and (max-width: 845px) {
+  .header {
+    max-width: 582px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    max-width: calc(100vw - 11.875%);
+    height: 56px;
+    padding-top: 28px;
+  }
+}

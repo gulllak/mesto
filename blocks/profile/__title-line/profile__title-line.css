@@ -1,0 +1,6 @@
+.profile__title-line {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+}

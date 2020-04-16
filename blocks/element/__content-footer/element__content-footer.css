@@ -1,0 +1,8 @@
+.element__content-footer {
+  background-color: white;
+  height: 80px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

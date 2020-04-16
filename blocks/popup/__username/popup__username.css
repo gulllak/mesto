@@ -1,0 +1,15 @@
+.popup__username {
+  width: 358px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0, .2);
+}
+
+@media screen and (max-width: 600px) {
+  .popup__username {
+    max-width: calc(100% - 16.744186%);
+  }
+}

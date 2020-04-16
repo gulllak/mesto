@@ -1,0 +1,32 @@
+@import url("../element/element.css");
+
+.elements {
+  max-width: calc(100vw - 31.09375%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  grid-gap: 20px 18px;
+}
+
+@media screen and (min-width: 1281px) {
+  .elements {
+    max-width: 882px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .elements {
+    max-width: 582px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .elements {
+    max-width: 282px;
+    grid-template-columns: 1fr;
+    grid-gap: 20px 0;
+  }
+}

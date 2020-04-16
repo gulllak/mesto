@@ -1,0 +1,19 @@
+.profile__signature {
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__signature {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__signature {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
