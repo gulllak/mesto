@@ -4,3 +4,9 @@
   align-items: baseline;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 600px) {
+  .profile__title-line {
+    justify-content: center;
+  }
+}
