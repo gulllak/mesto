@@ -11,6 +11,8 @@
   padding: 0;
   outline: none;
   cursor: pointer;
+  -webkit-transition: .2s linear;
+  -o-transition: .2s linear;
   transition: .2s linear;
 }
 

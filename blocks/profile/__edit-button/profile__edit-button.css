@@ -10,6 +10,8 @@
   margin-left: 17px;
   outline: none;
   cursor: pointer;
+  -webkit-transition: .2s linear;
+  -o-transition: .2s linear;
   transition: .2s linear;
 }
 
