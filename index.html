@@ -8,6 +8,41 @@
 </head>
 <body>
   <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="логотип">
+    </header>
+
+    <main class="content>">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
+        <div class="profile__info">
+          <div class="profile__title-line">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <p class="profile__signature">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+
+      <section class="elements">
+        <template id="cards">
+          <div class="element">
+            <img class="element__image" src="" alt="">
+            <button class="element__trash" type="button"></button>
+            <div class="element__content-footer">
+              <h2 class="element__title"></h2>
+              <button class="element__favorite" type="button"></button>
+            </div>
+          </div>
+        </template>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__signature">&copy; 2020 Mesto Russia</p>
+    </footer>
+
     <section class="popup popup_opacity" id="edit">
       <form class="popup__container">
         <button class="popup__close" type="reset"></button>
@@ -33,41 +68,6 @@
         <p class="popup__image_signature"></p>
       </div>
     </section>
-
-    <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="логотип">
-    </header>
-
-    <main class="content>">
-      <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
-        <div class="profile__info">
-          <div class="profile__title-line">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
-          </div>
-          <p class="profile__signature">Исследователь океана</p>
-        </div>
-        <button class="profile__add-button" type="button"></button>
-      </section>
-
-      <section class="elements">
-        <template id="cards">
-          <div class="element">
-            <img class="element__image" src="" alt="">
-            <img class="element__trash" src="./images/trash.svg" alt="корзина">
-            <div class="element__content-footer">
-              <h2 class="element__title"></h2>
-              <button class="element__favorite" type="button"></button>
-            </div>
-          </div>
-        </template>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p class="footer__signature">&copy; 2020 Mesto Russia</p>
-    </footer>
   </div>
   <script src="./script/elements.js"></script>
   <script src="./script/script.js"></script>
