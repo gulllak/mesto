@@ -23,6 +23,13 @@
   }
 }
 
+@media screen and (max-width: 450px) {
+  .popup__close {
+    top: -35px;
+    right: -35px;
+  }
+}
+
 .popup__close:hover {
   opacity: .6;
 }

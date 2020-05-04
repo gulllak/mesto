@@ -1,5 +1,4 @@
-.popup__signature {
-  width: 358px;
+.popup__input_signature {
   margin: 30px auto 48px;
   font-size: 14px;
   line-height: 17px;
@@ -8,14 +7,8 @@
   border-bottom: 1px solid rgba(0,0,0, .2);
 }
 
-@media screen and (max-width: 600px) {
-  .popup__signature {
-    max-width: calc(100% - 16.744186%);
-  }
-}
-
 @media screen and (max-width: 450px) {
-  .popup__signature {
+  .popup__input_signature {
     margin: 20px auto 25px;
   }
 }

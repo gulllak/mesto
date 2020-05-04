@@ -1,11 +1,14 @@
 @import url("../element/__image/element__image.css");
+@import url("../element/__trash/element__trash.css");
 @import url("../element/__content-footer/element__content-footer.css");
 @import url("../element/__title/element__title.css");
 @import url("../element/__favorite/element__favorite.css");
+@import url('../element/__favorite/_active/element__favorite_active.css');
 
 .element {
   font-size: 0;
   max-height: 100%;
   border-radius: 10px 10px 10px 10px;
   overflow: hidden;
+  position: relative;
 }

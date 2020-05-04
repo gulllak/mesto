@@ -1,0 +1,40 @@
+@import url("../../popup/__input/_username/popup__input_username.css");
+@import url("../../popup/__input/_signature/popup__input_signature.css");
+@import url("../../popup/__input/_card-name/popup__input_card-name.css");
+@import url("../../popup/__input/_card-url/popup__input_card-url.css");
+
+.popup__input {
+  width: 358px;
+}
+
+input.popup__input::-webkit-input-placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: #C4C4C4;
+}
+input.popup__input::-moz-placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: #C4C4C4;
+}
+input.popup__input:-ms-input-placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: #C4C4C4;
+}
+input.popup__input::-ms-input-placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: #C4C4C4;
+}
+input.popup__input::placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: #C4C4C4;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__input {
+    max-width: calc(100% - 16.744186%);
+  }
+}

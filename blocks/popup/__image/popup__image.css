@@ -1,0 +1,7 @@
+@import url("../../popup/__image/_full/popup__image_full.css");
+@import url("../../popup/__image/_signature/popup__image_signature.css");
+
+.popup__image {
+  margin: auto;
+  position: relative;
+}

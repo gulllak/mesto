@@ -8,14 +8,30 @@
 </head>
 <body>
   <div class="page">
-    <section class="popup">
+    <section class="popup popup_opacity" id="edit">
       <form class="popup__container">
         <button class="popup__close" type="reset"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <input type="text" name="username" class="popup__username" value=" ">
-        <input type="text" name="signature" class="popup__signature" value=" ">
-        <button type="submit" class="popup__btn-save" value="Сохранить">Сохранить</button>
+        <input type="text" name="username" class="popup__input popup__input_username" value="">
+        <input type="text" name="signature" class="popup__input popup__input_signature" value="">
+        <button type="submit" class="popup__btn-save">Сохранить</button>
       </form>
+    </section>
+    <section class="popup popup_opacity" id="add">
+      <form class="popup__container popup__container_form-add">
+        <button class="popup__close popup__close_form-add" type="reset"></button>
+        <h2 class="popup__heading">Новое место</h2>
+        <input type="text" name="name" class="popup__input popup__input_card-name" placeholder="Название">
+        <input type="url" name="url" class="popup__input popup__input_card-url" placeholder="Ссылка на картинку">
+        <button type="submit" class="popup__btn-save">Создать</button>
+      </form>
+    </section>
+    <section class="popup popup_opacity-image" id="image">
+      <div class="popup__image">
+        <button class="popup__close popup__close_fullscreen-image" type="reset"></button>
+        <img class="popup__image_full" src="">
+        <p class="popup__image_signature"></p>
+      </div>
     </section>
 
     <header class="header">
@@ -36,48 +52,16 @@
       </section>
 
       <section class="elements">
-        <div class="element">
-          <img class="element__image" src="./images/paris.jpeg" alt="франция">
-          <div class="element__content-footer">
-            <h2 class="element__title">Франция</h2>
-            <button class="element__favorite" type="button"></button>
+        <template id="cards">
+          <div class="element">
+            <img class="element__image" src="" alt="">
+            <img class="element__trash" src="./images/trash.svg" alt="корзина">
+            <div class="element__content-footer">
+              <h2 class="element__title"></h2>
+              <button class="element__favorite" type="button"></button>
+            </div>
           </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/maldives.jpeg" alt="мальдивы">
-          <div class="element__content-footer">
-            <h2 class="element__title">Мальдивы</h2>
-            <button class="element__favorite" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/spain.jpeg" alt="испания">
-          <div class="element__content-footer">
-            <h2 class="element__title">Испания</h2>
-            <button class="element__favorite" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/japan.jpeg" alt="япония">
-          <div class="element__content-footer">
-            <h2 class="element__title">Япония</h2>
-            <button class="element__favorite" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/usa.jpeg" alt="США">
-          <div class="element__content-footer">
-            <h2 class="element__title">США</h2>
-            <button class="element__favorite" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/turkey.jpeg" alt="турция">
-          <div class="element__content-footer">
-            <h2 class="element__title">Турция</h2>
-            <button class="element__favorite" type="button"></button>
-          </div>
-        </div>
+        </template>
       </section>
     </main>
 
@@ -85,6 +69,7 @@
       <p class="footer__signature">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+  <script src="./script/elements.js"></script>
   <script src="./script/script.js"></script>
 </body>
 </html>
