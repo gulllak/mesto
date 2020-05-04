@@ -4,6 +4,17 @@
   background-color: #000000;
   margin: 0 auto;
   font-family: "Inter", Arial, sans-serif;
+  display: -ms-grid;
+  display: grid;
+        grid-template-areas:
+        "header"
+        "content"
+        "footer";
+  -ms-grid-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  -ms-grid-columns: auto;
+  grid-template-columns: auto;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 1281px) {

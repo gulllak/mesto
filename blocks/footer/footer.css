@@ -4,6 +4,8 @@
   margin: 66px auto 0;
   padding-bottom: 66px;
   max-width: calc(100vw - 31.09375%);
+  grid-area: footer;
+    width: -webkit-fill-available;
 }
 
 @media screen and (min-width: 1281px) {

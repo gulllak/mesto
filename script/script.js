@@ -20,7 +20,6 @@ const fullscreenImage = document.getElementById('image');
 const popupCloseFullscreenImage = document.querySelector('.popup__close_fullscreen-image');
 const popupImageFull = document.querySelector('.popup__image_full');
 const popupImageSignature = document.querySelector('.popup__image_signature');
-const elementImage = document.querySelector
 
 const remove = element => element.remove();
 

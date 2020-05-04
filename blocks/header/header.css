@@ -6,6 +6,8 @@
   padding-top: 45px;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
   font-size: 0;
+  grid-area: header;
+    width: -webkit-fill-available;
 }
 
 @media screen and (min-width: 1281px) {
