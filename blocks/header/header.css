@@ -29,3 +29,9 @@
     padding-top: 28px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .header {
+    max-width: 100%;
+  }
+}

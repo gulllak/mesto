@@ -5,6 +5,7 @@
 
 .popup__input {
   width: 358px;
+  padding: 0;
 }
 
 input.popup__input::-webkit-input-placeholder {
@@ -36,5 +37,32 @@ input.popup__input::placeholder {
 @media screen and (max-width: 600px) {
   .popup__input {
     max-width: calc(100% - 16.744186%);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__input {
+    max-width: 200px;
+    height: 24px;
+  }
+  input.popup__input::placeholder {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  input.popup__input::-webkit-input-placeholder {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  input.popup__input::-moz-placeholder {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  input.popup__input:-ms-input-placeholder {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  input.popup__input::-ms-input-placeholder {
+    font-size: 12px;
+    line-height: 15px;
   }
 }
