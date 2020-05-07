@@ -13,6 +13,7 @@
   -webkit-transition: .2s linear;
   -o-transition: .2s linear;
   transition: .2s linear;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 600px) {

@@ -5,7 +5,9 @@
   padding-bottom: 66px;
   max-width: calc(100vw - 31.09375%);
   grid-area: footer;
-    width: -webkit-fill-available;
+  width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
 }
 
 @media screen and (min-width: 1281px) {
