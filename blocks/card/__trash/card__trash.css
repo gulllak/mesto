@@ -1,4 +1,4 @@
-.element__trash {
+.card__trash {
   background-image: url('../../../images/trash.svg');
   height: 18px;
   width: 19.3px;
@@ -17,6 +17,6 @@
   cursor: pointer;
 }
 
-.element__trash:hover {
+.card__trash:hover {
   opacity: .6;
 }

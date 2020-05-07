@@ -1,4 +1,4 @@
-.element__favorite {
+.card__favorite {
     background-image: url('../../../images/favorite.svg');
     height: 18.13px;
     width: 20.76px;
@@ -15,6 +15,6 @@
     margin-right: 18px;
 }
 
-.element__favorite:hover {
+.card__favorite:hover {
   opacity: .6;
 }
