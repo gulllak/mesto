@@ -37,21 +37,10 @@ const openImage = (event) => {
   openClosePopup(fullscreenImage);
 };
 
-// const removeCard = function(event){
-//   event.target.removeEventListener('click',favorite);
-//   event.target.removeEventListener('click',openImage);
-//   event.target.removeEventListener("click",removeCard);
-//   event.target.closest('.card').remove();
-// };
-
 const removeCard = function(cardTemplateCopy, cardFavorite, cardImage){
   cardFavorite.removeEventListener('click',favorite);
   cardImage.removeEventListener('click',openImage);
   cardTemplateCopy.remove();
-};
-
-const defaultSetCards = function(item) {
-  cardContainer.append(newCard(item.name, item.link));
 };
 
 //создание карточки
@@ -73,6 +62,10 @@ function newCard(name, image) {
   cardTrash.addEventListener('click',() => removeCard(cardTemplateCopy, cardFavorite, cardImage),{once : true});
   return cardTemplateCopy;
 }
+
+const defaultSetCards = function(item) {
+  cardContainer.append(newCard(item.name, item.link));
+};
 
 function openEditForm (){
   popupInputUsername.value = profileName.textContent;
