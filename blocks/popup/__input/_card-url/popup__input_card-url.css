@@ -1,6 +1,6 @@
 .popup__input_card-url {
-  width: 358px;
-  margin: 30px auto 48px;
+  width: 100%;
+  margin: 30px auto 0;
   font-size: 14px;
   line-height: 17px;
   color: #000000;
@@ -8,14 +8,8 @@
   border-bottom: 1px solid rgba(0,0,0, .2);
 }
 
-@media screen and (max-width: 600px) {
-  .popup__input_card-url {
-    max-width: calc(100% - 16.744186%);
-  }
-}
-
 @media screen and (max-width: 450px) {
   .popup__input_card-url {
-    margin: 20px auto 36px;
+    margin: 20px auto 0;
   }
 }

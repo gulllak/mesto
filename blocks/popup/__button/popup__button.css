@@ -1,7 +1,7 @@
 .popup__button {
   width: 358px;
   height: 50px;
-  margin: 0 auto;
+  margin: 48px auto 0;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
@@ -9,6 +9,7 @@
   background: #000000;
   border-radius: 2px;
   border: 0;
+  padding: 0;
   outline: none;
   cursor: pointer;
   -webkit-transition: .2s linear;
@@ -21,11 +22,19 @@
     max-width: calc(100% - 16.744186%);
   }
 }
+@media screen and (max-width: 450px) {
+  .popup__button {
+    height: 40px;
+    margin: 36px auto 0;
+  }
+}
+
 
 @media screen and (max-width: 320px) {
   .popup__button {
     max-width: 200px;
     height: 40px;
+    margin: 36px auto 30px;
   }
 }
 

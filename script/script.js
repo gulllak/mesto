@@ -3,18 +3,19 @@ const popupEdit = document.querySelector('#edit');
 const popupClose = document.querySelector('.popup__close');
 const profileName = document.querySelector('.profile__name');
 const profileSignature = document.querySelector('.profile__signature');
-const popupInputUsername = document.querySelector('.popup__input_username');
-const popupInputSignature = document.querySelector('.popup__input_signature');
-const formSubmitEdit = document.querySelector('.popup__form_form-edit');
+const formEditProfile = document.forms.edit_profile;
+const popupInputUsername = formEditProfile.elements.username;
+const popupInputSignature = formEditProfile.elements.signature;
+
 
 const profileAddButton = document.querySelector('.profile__add-button');
 const popupAdd = document.querySelector('#add');
 const popupCloseFormAdd = document.querySelector('.popup__close_form-add');
-const formSubmitAdd = document.querySelector('.popup__form_form-add');
+const formAddCard = document.forms.add_card;
+const popupInputCardName = formAddCard.elements.card_name;
+const popupInputCardUrl = formAddCard.elements.card_url;
 
 const cardContainer = document.querySelector(".card-container");
-const popupInputCardName = document.querySelector('.popup__input_card-name');
-const popupInputCardUrl = document.querySelector('.popup__input_card-url');
 
 const fullscreenImage = document.querySelector('#image');
 const popupCloseFullscreenImage = document.querySelector('.popup__close_fullscreen-image');
@@ -71,6 +72,7 @@ function openEditForm (){
   popupInputUsername.value = profileName.textContent;
   popupInputSignature.value = profileSignature.textContent;
   openClosePopup(popupEdit);
+  formEditProfile.checkForm()
 };
 
 function saveEditForm(event) {
@@ -85,17 +87,16 @@ function openAddForm (event) {
   event.preventDefault();
   openClosePopup(popupAdd);
   cardContainer.prepend(newCard(popupInputCardName.value, popupInputCardUrl.value));
-  popupInputCardName.value = '';
-  popupInputCardUrl.value = '';
+  formAddCard.reset();
 };
 
 profileEditButton.addEventListener('click', openEditForm);
 popupClose.addEventListener('click', () => openClosePopup(popupEdit));
-formSubmitEdit.addEventListener('submit', saveEditForm);
+formEditProfile.addEventListener('submit', saveEditForm);
 
 profileAddButton.addEventListener('click',() => openClosePopup(popupAdd));
 popupCloseFormAdd.addEventListener('click', () => openClosePopup(popupAdd));
-formSubmitAdd.addEventListener('submit', openAddForm);
+formAddCard.addEventListener('submit', openAddForm);
 popupCloseFullscreenImage.addEventListener('click',() => openClosePopup(fullscreenImage));
 
 initialCards.forEach(defaultSetCards);

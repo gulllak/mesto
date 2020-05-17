@@ -1,7 +1,10 @@
 @import url("../popup/__form/popup__form.css");
 @import url("../popup/__close/popup__close.css");
 @import url("../popup/__heading/popup__heading.css");
+@import url("../popup/__field/popup__field.css");
 @import url("../popup/__input/popup__input.css");
+@import url("../popup/__error/popup__error_visible.css");
+@import url("../popup/__error/_active/popup__error_visible_active.css");
 @import url("../popup/__button/popup__button.css");
 @import url("../popup/__button/_disabled/popup__button_disabled.css");
 @import url('../popup/__image/popup__image.css');

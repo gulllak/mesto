@@ -1,0 +1,25 @@
+.popup__error_visible {
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  opacity: 0;
+  width: 100%;
+  transition: 0.3s;
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .popup__error_visible{
+    font-size: 11px;
+    line-height: 14px;
+}
+
+@media screen and (max-width: 450px) {
+  .popup__error_visible{
+    top: calc(100% + 1px);
+    font-size: 9px;
+    line-height: 10px;
+  }
+}

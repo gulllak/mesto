@@ -2,10 +2,12 @@
 @import url("../../popup/__input/_signature/popup__input_signature.css");
 @import url("../../popup/__input/_card-name/popup__input_card-name.css");
 @import url("../../popup/__input/_card-url/popup__input_card-url.css");
+@import url("../../popup/__input/_type/popup__input_type_error.css");
 
 .popup__input {
-  width: 358px;
   padding: 0;
+  outline: none;
+  height: 26px;
 }
 
 input.popup__input::-webkit-input-placeholder {
@@ -34,16 +36,11 @@ input.popup__input::placeholder {
   color: #C4C4C4;
 }
 
-@media screen and (max-width: 600px) {
-  .popup__input {
-    max-width: calc(100% - 16.744186%);
-  }
-}
 
 @media screen and (max-width: 320px) {
   .popup__input {
     max-width: 200px;
-    height: 24px;
+    height: 23px;
   }
   input.popup__input::placeholder {
     font-size: 12px;
