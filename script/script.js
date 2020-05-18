@@ -1,4 +1,5 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
+const popupOverlay = document.querySelector('.popup');
 const popupEdit = document.querySelector('#edit');
 const popupClose = document.querySelector('.popup__close');
 const profileName = document.querySelector('.profile__name');
@@ -24,7 +25,30 @@ const popupImageSignature = document.querySelector('.popup__image_signature');
 
 const cardsTemplate = document.querySelector('#cards').content;
 
+function closePopupOverlayAndEsc (popup) {
+  document.addEventListener("keydown",(evt) => {
+    if(evt.key === "Escape") {
+      openClosePopup(popup);
+    }
+  });
+
+  document.addEventListener('click',(evt)=> {
+    if(evt.target === popupOverlay) {
+      console.log('evt.target', evt.target);
+      console.log('popupOverlay', popupOverlay);
+      console.log('evt.target === popupOverlay', evt.target === popupOverlay);
+    openClosePopup(popup);
+    }
+  });
+};
+
 function openClosePopup(popup) {
+  if(popup !== fullscreenImage) {
+    const inputList = Array.from(popup.querySelectorAll('.popup__input'));
+    resetHandlerValidation (inputList, popup);
+  }
+  closePopupOverlayAndEsc(popup);
+
   popup.classList.toggle('popup_opened');
 };
 
@@ -72,7 +96,7 @@ function openEditForm (){
   popupInputUsername.value = profileName.textContent;
   popupInputSignature.value = profileSignature.textContent;
   openClosePopup(popupEdit);
-  formEditProfile.checkForm()
+  formEditProfile.checkForm();
 };
 
 function saveEditForm(event) {

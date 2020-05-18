@@ -15,6 +15,22 @@ const hideInputError = (formObject, formSelector,inputSelector) => {
   errorClass.textContent = '';
 };
 
+function resetHandlerValidation (input, popup) {
+
+  input.forEach(elem => {
+    const errorClass = document.querySelector(`#${elem.id}-error`);
+    elem.classList.remove('popup__input_type_error');
+    errorClass.classList.remove('popup__error_visible_active');
+    errorClass.textContent = '';
+  });
+
+  const submitButton = popup.querySelector('.popup__button');
+
+  submitButton.setAttribute('disabled', true);
+  submitButton.classList.add('popup__button_disabled');
+
+};
+
 // Функция, которая проверяет валидность поля
 const isValid = (formObject, formSelector,inputSelector) => {
   if (!inputSelector.validity.valid) {
