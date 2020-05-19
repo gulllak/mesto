@@ -1,5 +1,4 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
-const popupOverlay = document.querySelector('.popup');
 const popupEdit = document.querySelector('#edit');
 const popupClose = document.querySelector('.popup__close');
 const profileName = document.querySelector('.profile__name');
@@ -19,37 +18,63 @@ const popupInputCardUrl = formAddCard.elements.card_url;
 const cardContainer = document.querySelector(".card-container");
 
 const fullscreenImage = document.querySelector('#image');
+const popupImage = document.querySelector('.popup__image');
 const popupCloseFullscreenImage = document.querySelector('.popup__close_fullscreen-image');
 const popupImageFull = document.querySelector('.popup__image_full');
 const popupImageSignature = document.querySelector('.popup__image_signature');
 
 const cardsTemplate = document.querySelector('#cards').content;
 
-function closePopupOverlayAndEsc (popup) {
-  document.addEventListener("keydown",(evt) => {
-    if(evt.key === "Escape") {
-      openClosePopup(popup);
-    }
-  });
+const hiddenPopupOverlayEsc = (event) =>{
 
-  document.addEventListener('click',(evt)=> {
-    if(evt.target === popupOverlay) {
-      console.log('evt.target', evt.target);
-      console.log('popupOverlay', popupOverlay);
-      console.log('evt.target === popupOverlay', evt.target === popupOverlay);
-    openClosePopup(popup);
+  const clickInPopupEdit = formEditProfile.contains(event.target);
+  const clickInPopupAdd = formAddCard.contains(event.target);
+  const clickInPopupImage = popupImage.contains(event.target);
+
+  const isOpenPopupEdit = Array.from(popupEdit.classList).indexOf("popup_opened") !== -1;
+  const isOpenPopupAdd = Array.from(popupAdd.classList).indexOf("popup_opened") !== -1;
+  const isOpenPopupImage = Array.from(fullscreenImage.classList).indexOf("popup_opened") !== -1;
+
+  const isEsc = event.key === "Escape";
+
+  if(isEsc){
+    if(isOpenPopupEdit){
+      openClosePopup(popupEdit);
     }
-  });
+    if(isOpenPopupAdd){
+      openClosePopup(popupAdd);
+    }
+    if(isOpenPopupImage){
+      openClosePopup(fullscreenImage);
+    }
+  } else {
+    if(!clickInPopupEdit && isOpenPopupEdit){
+      openClosePopup(popupEdit);
+    }
+    if(!clickInPopupAdd && isOpenPopupAdd){
+      openClosePopup(popupAdd);
+    }
+    if(!clickInPopupImage && isOpenPopupImage){
+      openClosePopup(fullscreenImage);
+    }
+  };
 };
+
+popupEdit.addEventListener('click',hiddenPopupOverlayEsc);
+popupAdd.addEventListener('click',hiddenPopupOverlayEsc);
+fullscreenImage.addEventListener('click',hiddenPopupOverlayEsc);
+
+const addEventListenerEsc = () => {
+  document.addEventListener('keyup',hiddenPopupOverlayEsc, {once : true});
+}
 
 function openClosePopup(popup) {
   if(popup !== fullscreenImage) {
     const inputList = Array.from(popup.querySelectorAll('.popup__input'));
     resetHandlerValidation (inputList, popup);
   }
-  closePopupOverlayAndEsc(popup);
-
   popup.classList.toggle('popup_opened');
+  addEventListenerEsc();
 };
 
 const favorite = (evt) => {

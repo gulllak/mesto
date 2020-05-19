@@ -48,7 +48,7 @@
         <button class="popup__close" type="reset"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
           <label class="popup__field">
-            <input id="username-input" type="text" name="username" class="popup__input popup__input_username" value="" minlength="2" maxlength="40" required>
+            <input id="username-input" type="text" name="username" class="popup__input popup__input_username" value="" minlength="2" maxlength="40" required pattern="[A-Za-zА-Яа-яЁё -]{1,}">
             <span id="username-input-error" class="popup__error_visible"></span>
           </label>
           <label class="popup__field">

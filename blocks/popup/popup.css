@@ -21,7 +21,7 @@
   display:flex;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: visibility .5s, opacity .5s linear;
-   -o-transition: visibility .5s, opacity .5s linear;
-   transition: visibility .5s, opacity .5s linear;
+      -webkit-transition: opacity 1s ease, visibility 0s ease 1s;
+      -o-transition: opacity 1s ease, visibility 0s ease 1s;
+      transition: opacity 1s ease, visibility 0s ease 1s;
 }
