@@ -26,7 +26,6 @@ const popupImageSignature = document.querySelector('.popup__image_signature');
 const cardsTemplate = document.querySelector('#cards').content;
 
 const hiddenPopupOverlayEsc = (event) =>{
-
   const clickInPopupEdit = formEditProfile.contains(event.target);
   const clickInPopupAdd = formAddCard.contains(event.target);
   const clickInPopupImage = popupImage.contains(event.target);
