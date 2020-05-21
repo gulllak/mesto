@@ -4,31 +4,27 @@ const showInputError = (formObject, formElement, inputElement, errorMessage) => 
 
   inputElement.classList.add(formObject.inputErrorClass);
   errorClass.textContent = errorMessage;
-  errorClass.classList.add('popup__error_visible_active');
+  errorClass.classList.add(`${formObject.errorClass}_active`);
 };
 // Функция, которая удаляет класс с ошибкой
 const hideInputError = (formObject, formElement, inputElement) => {
   const errorClass = formElement.querySelector(`#${inputElement.id}-error`);
 
   inputElement.classList.remove(formObject.inputErrorClass);
-  errorClass.classList.remove('popup__error_visible_active');
+  errorClass.classList.remove(`${formObject.errorClass}_active`);
   errorClass.textContent = '';
 };
 
 function resetHandlerValidation (input, popup) {
-
-  input.forEach(elem => {
-    const errorClass = document.querySelector(`#${elem.id}-error`);
-    elem.classList.remove('popup__input_type_error');
-    errorClass.classList.remove('popup__error_visible_active');
-    errorClass.textContent = '';
-  });
-
+  const formObject = {inputErrorClass: 'popup__input_type_error'};
   const submitButton = popup.querySelector('.popup__button');
+
+   input.forEach(elem => {
+       hideInputError(formObject,popup,elem);
+   });
 
   submitButton.setAttribute('disabled', true);
   submitButton.classList.add('popup__button_disabled');
-
 };
 
 // Функция, которая проверяет валидность поля
@@ -44,8 +40,8 @@ const setEventListeners = (formObject, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(formObject.inputSelector));
   const submitButton = formElement.querySelector(formObject.submitButtonSelector);
 
-    formElement.checkForm = () => {
-      toggleButtonState(formObject, inputList,submitButton);
+  formElement.checkForm = () => {
+    toggleButtonState(formObject, inputList,submitButton);
   };
 
   inputList.forEach((inputElement) => {
@@ -55,7 +51,6 @@ const setEventListeners = (formObject, formElement) => {
     });
   });
 };
-
 
 const enableValidation = (formObject) => {
   // Найдём все формы с указанным классом в DOM,
