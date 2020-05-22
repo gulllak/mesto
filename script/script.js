@@ -25,41 +25,31 @@ const hiddenPopupOverlay = (event) => {
   popup.forEach(elem =>{
     elem.closest('.popup_opened');
     if(event.target === elem){
-      openClosePopup(elem);
-      }
+      closePopup(elem);
+      };
     });
 };
 
 const hiddenPopupEscape = (event) => {
   const isEsc = event.key === "Escape";
-  if(isEsc){
-    console.log('da');
-    popup.forEach(elem => {
-    elem.closest('.popup_opened');
-    const checkClass = Array.from(elem.classList).indexOf("popup_opened") !== -1;
-      if(checkClass){
-      openClosePopup(elem);
-      }
-    });
-  };
+  if(!isEsc) return;
+  const checkClass = popup.find((item) => item.classList.contains('popup_opened'));
+  if (checkClass) closePopup(checkClass);
 };
 
-const removeEventListenerEsc = () => {
-  document.removeEventListener('keyup',hiddenPopupEscape);
-}
-
-function openClosePopup(popup) {
+function openPopup (popup) {
   if(popup !== fullscreenImage) {
-    const inputList = Array.from(popup.querySelectorAll('.popup__input'));
-    resetHandlerValidation (inputList, popup);
-  }
-  const isActive = popup.classList.toggle('popup_opened');
-  if(isActive) {
-    popup.addEventListener('click', hiddenPopupOverlay);
-    document.addEventListener('keydown', hiddenPopupEscape);
-   } else {
-    removeEventListenerEsc();
-   }
+    resetHandlerValidation (object, popup);
+  };
+  popup.addEventListener('click', hiddenPopupOverlay);
+  document.addEventListener('keydown', hiddenPopupEscape);
+  popup.classList.add('popup_opened');
+};
+
+function closePopup (popup){
+  popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', hiddenPopupOverlay);
+  document.removeEventListener('keydown', hiddenPopupEscape);
 };
 
 const favorite = (evt) => {
@@ -69,7 +59,7 @@ const favorite = (evt) => {
 const openImage = (event) => {
   popupImageFull.src = event.target.src;
   popupImageSignature.textContent = event.target.alt;
-  openClosePopup(fullscreenImage);
+  openPopup(fullscreenImage);
 };
 
 const removeCard = function(cardTemplateCopy, cardFavorite, cardImage){
@@ -96,7 +86,7 @@ function newCard(name, image) {
   //удаление элемента
   cardTrash.addEventListener('click',() => removeCard(cardTemplateCopy, cardFavorite, cardImage),{once : true});
   return cardTemplateCopy;
-}
+};
 
 const defaultSetCards = function(item) {
   cardContainer.append(newCard(item.name, item.link));
@@ -105,7 +95,7 @@ const defaultSetCards = function(item) {
 function openEditForm (){
   popupInputUsername.value = profileName.textContent;
   popupInputSignature.value = profileSignature.textContent;
-  openClosePopup(popupEdit);
+  openPopup(popupEdit);
   formEditProfile.checkForm();
 };
 
@@ -113,24 +103,24 @@ function saveEditForm(event) {
   event.preventDefault();
   profileName.textContent = popupInputUsername.value;
   profileSignature.textContent = popupInputSignature.value;
-  openClosePopup(popupEdit);
+  closePopup(popupEdit);
 };
 
 //форма добавления карточки
 function openAddForm (event) {
   event.preventDefault();
-  openClosePopup(popupAdd);
+  closePopup(popupAdd);
   cardContainer.prepend(newCard(popupInputCardName.value, popupInputCardUrl.value));
   formAddCard.reset();
 };
 
 profileEditButton.addEventListener('click', openEditForm);
-popupClose.addEventListener('click', () => openClosePopup(popupEdit));
+popupClose.addEventListener('click', () => closePopup(popupEdit));
 formEditProfile.addEventListener('submit', saveEditForm);
 
-profileAddButton.addEventListener('click',() => openClosePopup(popupAdd));
-popupCloseFormAdd.addEventListener('click', () => openClosePopup(popupAdd));
+profileAddButton.addEventListener('click',() => openPopup(popupAdd));
+popupCloseFormAdd.addEventListener('click', () => closePopup(popupAdd));
 formAddCard.addEventListener('submit', openAddForm);
-popupCloseFullscreenImage.addEventListener('click',() => openClosePopup(fullscreenImage));
+popupCloseFullscreenImage.addEventListener('click',() => closePopup(fullscreenImage));
 
 initialCards.forEach(defaultSetCards);
