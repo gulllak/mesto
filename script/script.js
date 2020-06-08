@@ -2,7 +2,7 @@ import {initialCards} from './elements.js';
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
-const object = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
@@ -26,7 +26,14 @@ const formAddCard = document.forms.add_card;
 const popupInputCardName = formAddCard.elements.card_name;
 const popupInputCardUrl = formAddCard.elements.card_url;
 const cardContainer = document.querySelector(".card-container");
+const fullscreenImage = document.querySelector('#image');
+const popupImageFull = document.querySelector('.popup__image_full');
+const popupImageSignature = document.querySelector('.popup__image_signature');
+const popupCloseFullscreenImage = document.querySelector('.popup__close_fullscreen-image');
 const popup = Array.from(document.querySelectorAll('.popup'));
+
+const profileFormValidator =  new FormValidator(validationConfig, formEditProfile);
+const newCardFormValidator =  new FormValidator(validationConfig, formAddCard);
 
 const hiddenPopupOverlay = (event) => {
   popup.forEach(elem =>{
@@ -44,25 +51,7 @@ const hiddenPopupEscape = (event) => {
   if (checkClass) closePopup(checkClass);
 };
 
-function hideInputError (object, formElement, input) {
-  const errorClass = formElement.querySelector(`#${input.id}-error`);
-  input.classList.remove(object.inputErrorClass);
-  errorClass.classList.remove(`${object.errorClass}_active`);
-  errorClass.textContent = '';
-};
-
-function resetHandlerValidation(object, popup) {
-  const submitButton = popup.querySelector(object.submitButtonSelector);
-  const inputList = Array.from(popup.querySelectorAll('.popup__input'));
-  inputList.forEach(elem => {
-       hideInputError(object,popup,elem);
-   });
-  submitButton.setAttribute('disabled', true);
-  submitButton.classList.add(object.inactiveButtonClass);
-};
-
 function openPopup (popup) {
-  resetHandlerValidation (object, popup);
   popup.addEventListener('click', hiddenPopupOverlay);
   document.addEventListener('keydown', hiddenPopupEscape);
   popup.classList.add('popup_opened');
@@ -74,17 +63,29 @@ function closePopup (popup){
   document.removeEventListener('keydown', hiddenPopupEscape);
 };
 
+export const openImage = (event) => {
+  popupImageFull.src = event.target.src;
+  popupImageSignature.textContent = event.target.alt;
+  openPopup(fullscreenImage);
+};
+
 function buttonActive(){
-  const submitButton = popupEdit.querySelector(object.submitButtonSelector);
+  const submitButton = popupEdit.querySelector(validationConfig.submitButtonSelector);
   submitButton.removeAttribute('disabled');
-  submitButton.classList.remove(object.inactiveButtonClass);
+  submitButton.classList.remove(validationConfig.inactiveButtonClass);
 }
 
 function openEditForm (){
   popupInputUsername.value = profileName.textContent;
   popupInputSignature.value = profileSignature.textContent;
   openPopup(popupEdit);
+  profileFormValidator.resetHandlerValidation(validationConfig, popupEdit);
   buttonActive();
+};
+
+function openAddForm(){
+  openPopup(popupAdd);
+  newCardFormValidator.resetHandlerValidation(validationConfig, popupAdd);
 };
 
 function saveEditForm(event) {
@@ -94,7 +95,7 @@ function saveEditForm(event) {
   closePopup(popupEdit);
 };
 
-function openAddForm (event) {
+function saveAddForm (event) {
   event.preventDefault();
   closePopup(popupAdd);
   const item = {
@@ -111,9 +112,11 @@ profileEditButton.addEventListener('click', openEditForm);
 popupClose.addEventListener('click', () => closePopup(popupEdit));
 formEditProfile.addEventListener('submit', saveEditForm);
 
-profileAddButton.addEventListener('click',() => openPopup(popupAdd));
+profileAddButton.addEventListener('click', openAddForm);
 popupCloseFormAdd.addEventListener('click', () => closePopup(popupAdd));
-formAddCard.addEventListener('submit', openAddForm);
+formAddCard.addEventListener('submit', saveAddForm);
+popupCloseFullscreenImage.addEventListener('click',() => closePopup(fullscreenImage));
+
 
 initialCards.forEach((item)=>{
   const card = new Card(item, '#cards');
@@ -122,10 +125,8 @@ initialCards.forEach((item)=>{
 });
 
 function validation() {
-  popup.forEach((form) => {
-      const openForm = new FormValidator(object, form);
-      openForm.enableValidation();
-  });
+  profileFormValidator.enableValidation();
+  newCardFormValidator.enableValidation();
 }
 
 validation();
