@@ -32,8 +32,8 @@ const popupImageSignature = document.querySelector('.popup__image_signature');
 const popupCloseFullscreenImage = document.querySelector('.popup__close_fullscreen-image');
 const popup = Array.from(document.querySelectorAll('.popup'));
 
-const profileFormValidator =  new FormValidator(validationConfig, formEditProfile);
-const newCardFormValidator =  new FormValidator(validationConfig, formAddCard);
+const profileFormValidator =  new FormValidator(validationConfig, popupEdit);
+const newCardFormValidator =  new FormValidator(validationConfig, popupAdd);
 
 const hiddenPopupOverlay = (event) => {
   popup.forEach(elem =>{
@@ -79,13 +79,13 @@ function openEditForm (){
   popupInputUsername.value = profileName.textContent;
   popupInputSignature.value = profileSignature.textContent;
   openPopup(popupEdit);
-  profileFormValidator.resetHandlerValidation(validationConfig, popupEdit);
+  profileFormValidator.resetValidation();
   buttonActive();
 };
 
 function openAddForm(){
   openPopup(popupAdd);
-  newCardFormValidator.resetHandlerValidation(validationConfig, popupAdd);
+  newCardFormValidator.resetValidation();
 };
 
 function saveEditForm(event) {

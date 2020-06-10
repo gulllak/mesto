@@ -5,6 +5,8 @@ export class Card {
     this._title = data.name;
     this._image = data.link;
     this._cardSelector = cardSelector;
+    this._handleFavorite = this._handleFavorite.bind(this);
+    this.openImage = openImage.bind(this);
   }
 
   _getTemplate() {
@@ -18,14 +20,10 @@ export class Card {
 
   _setEventListeners() {
     this._element.querySelector('.card__favorite')
-    .addEventListener('click', () => {
-      this._handleFavorite();
-    });
+    .addEventListener('click', this._handleFavorite);
 
     this._element.querySelector('.card__image')
-    .addEventListener('click', () => {
-      openImage(event);
-    });
+    .addEventListener('click', this.openImage);
 
     this._element.querySelector('.card__trash')
     .addEventListener('click',() => {
@@ -38,12 +36,8 @@ export class Card {
   };
 
   _removeCard(){
-    this._element.querySelector('.card__favorite').removeEventListener('click',() => {
-      this._handleFavorite();
-    });
-    this._element.querySelector('.card__image').removeEventListener('click',() => {
-      openImage(event);
-    });
+    this._element.querySelector('.card__favorite').removeEventListener('click',this._handleFavorite);
+    this._element.querySelector('.card__image').removeEventListener('click',this.openImage);
     this._element.remove();
     this._element = null;
   };

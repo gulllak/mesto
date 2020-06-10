@@ -25,14 +25,12 @@ export class FormValidator {
     errorClass.textContent = '';
   };
 
-  resetHandlerValidation(validationConfig, popup) {
-    const submitButton = popup.querySelector(validationConfig.submitButtonSelector);
-    const inputList = Array.from(popup.querySelectorAll('.popup__input'));
-    inputList.forEach(inputElement => {
+  resetValidation() {
+    this.inputList.forEach(inputElement => {
          this._hideInputError(inputElement);
      });
-    submitButton.setAttribute('disabled', true);
-    submitButton.classList.add(validationConfig.inactiveButtonClass);
+     this.submitButton.setAttribute('disabled', true);
+     this.submitButton.classList.add(this._inactiveButtonClass);
   };
 
   _isValid(inputElement) {
@@ -60,13 +58,13 @@ export class FormValidator {
   };
 
   _setEventListeners() {
-    const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-    const submitButton = this._form.querySelector(this._submitButtonSelector);
+     this.submitButton = this._form.querySelector(this._submitButtonSelector);
+     this.inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
 
-    inputList.forEach((inputElement) => {
+     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
-        this._toggleButtonState(inputList, submitButton);
+        this._toggleButtonState(this.inputList, this.submitButton);
       });
     });
   };
