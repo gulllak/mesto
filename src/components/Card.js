@@ -1,12 +1,10 @@
-import {openImage} from './script.js';
-
-export class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor({data , handleCardClick}, cardSelector) {
     this._title = data.name;
     this._image = data.link;
     this._cardSelector = cardSelector;
     this._handleFavorite = this._handleFavorite.bind(this);
-    this.openImage = openImage.bind(this);
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -23,7 +21,7 @@ export class Card {
     .addEventListener('click', this._handleFavorite);
 
     this._element.querySelector('.card__image')
-    .addEventListener('click', this.openImage);
+    .addEventListener('click', () => this._handleCardClick(event));
 
     this._element.querySelector('.card__trash')
     .addEventListener('click',() => {
@@ -37,7 +35,6 @@ export class Card {
 
   _removeCard(){
     this._element.querySelector('.card__favorite').removeEventListener('click',this._handleFavorite);
-    this._element.querySelector('.card__image').removeEventListener('click',this.openImage);
     this._element.remove();
     this._element = null;
   };

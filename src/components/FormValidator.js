@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(validationConfig, form){
     this._formSelector = validationConfig.formSelector;
     this._inputSelector = validationConfig.inputSelector;
@@ -31,6 +31,12 @@ export class FormValidator {
      });
      this.submitButton.setAttribute('disabled', true);
      this.submitButton.classList.add(this._inactiveButtonClass);
+
+//
+    if(this._form === document.querySelector('#edit')){
+      this.submitButton.removeAttribute('disabled');
+      this.submitButton.classList.remove(this._inactiveButtonClass);
+    }
   };
 
   _isValid(inputElement) {
