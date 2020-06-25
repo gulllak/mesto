@@ -21,7 +21,7 @@ export default class Card {
     .addEventListener('click', this._handleFavorite);
 
     this._element.querySelector('.card__image')
-    .addEventListener('click', () => this._handleCardClick(event));
+    .addEventListener('click', () => this._handleCardClick(this._image, this._title));
 
     this._element.querySelector('.card__trash')
     .addEventListener('click',() => {

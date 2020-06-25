@@ -39,3 +39,5 @@ export const validationConfig = {
   export const profileAddButton = document.querySelector('.profile__add-button');
   export const popupAdd = document.querySelector('#add');
   export const cardContainer = '.card-container';
+  export const nameInput = document.querySelector('.popup__input_username');
+  export const descriptionInput = document.querySelector('.popup__input_signature');

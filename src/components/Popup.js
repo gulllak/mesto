@@ -1,6 +1,7 @@
 export default class Popup {
     constructor(popupSelector){
-        this._popupSelector = document.querySelector(popupSelector);
+        this._popupElement = document.querySelector(popupSelector);
+        //this._element = this._popupElement.querySelector('.popup__form');
         //логика закрытия попапа клавишей Esc
         this._handleEscClose = (event) => {
             if(event.key === "Escape") {
@@ -9,27 +10,25 @@ export default class Popup {
         };
         //логика закрытия попапа по оверлею
         this._hiddenPopupOverlay = (event) => {
-            const overlay = this._popupSelector.closest('.popup_opened');
+            const overlay = this._popupElement.closest('.popup_opened');
             if(event.target === overlay){
                 this.close();
                 };
         };
     };
     open(){
-        this.setEventListeners();
-        this._popupSelector.classList.add('popup_opened');
+        document.addEventListener('keyup', this._handleEscClose);
+        this._popupElement.addEventListener('click', this._hiddenPopupOverlay);
+        this._popupElement.classList.add('popup_opened');
         
     };
     close() {
-        this._popupSelector.classList.remove('popup_opened');
+        this._popupElement.classList.remove('popup_opened');
         document.removeEventListener('keyup', this._handleEscClose);
-        this._popupSelector.removeEventListener('click', this._hiddenPopupOverlay);
+        this._popupElement.removeEventListener('click', this._hiddenPopupOverlay);
     };
-    //добавляет слушатель клика иконке закрытия попапа
     setEventListeners(){
-        document.addEventListener('keyup', this._handleEscClose);
-        this._popupSelector.addEventListener('click', this._hiddenPopupOverlay);
-        this.closeButton = this._popupSelector.querySelector('.popup__close');
+        this.closeButton = this._popupElement.querySelector('.popup__close');
         this.closeButton.addEventListener('click', ()=>this.close());
     };
 }

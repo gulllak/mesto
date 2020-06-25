@@ -11,36 +11,27 @@ export default class PopupWithForm extends Popup {
             this._element.reset();
           };
     };
-    _getTemplate(){
-        const formElement = this._popupSelector
-        .querySelector('.popup__form');
-        return formElement;
-    }
     //собирает данные всех полей формы
     _getInputValues(){
         this._inputList = this._element.querySelectorAll('.popup__input');
-        this._formValues = {};
+        const formValues = {};
         this._inputList.forEach((input) => {
-            this._formValues[input.name] = input.value
+            formValues[input.name] = input.value
             }
             );
-        return this._formValues;
+        return formValues;
     };
     setEventListeners(){
         super.setEventListeners();
-        this._element.addEventListener('submit', this._formRender, {once : true});
+        this._element = this._popupElement.querySelector('.popup__form');
+        this._element.addEventListener('submit', this._formRender);
     };
     close(){
         super.close();
         //сброс формы добавления карточки
-        if(this._popupSelector.classList.contains('popup__form_card')){ 
-            const form = this._popupSelector.querySelector('.popup__form');
+        if(this._popupElement.id === 'add'){ 
+            const form = this._popupElement.querySelector('.popup__form');
             form.reset();
-        }
+        }        
     };
-    generateForm() {
-        this._element = this._getTemplate();
-        this.setEventListeners();
-        return this._element;
-      }
 };
