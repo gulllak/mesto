@@ -16,10 +16,12 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
-import {openImage} from '../utils/utils.js';
 
+const openImage = (item) => {
+        popupWithImage.open(item)
+      };
 
-export const popupWithImage = new PopupWithImage('#image');
+const popupWithImage = new PopupWithImage('#image');
 //карточки по умолчанию
 const cardList = new Section({
   items: initialCards.reverse(),
