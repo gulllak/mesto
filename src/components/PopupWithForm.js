@@ -7,8 +7,6 @@ export default class PopupWithForm extends Popup {
         this._formRender = (event) => {
             event.preventDefault();
             this._formSubmit(this._getInputValues());
-            this.close();
-            this._element.reset();
           };
     };
     //собирает данные всех полей формы
@@ -24,14 +22,13 @@ export default class PopupWithForm extends Popup {
     setEventListeners(){
         super.setEventListeners();
         this._element = this._popupElement.querySelector('.popup__form');
-        this._element.addEventListener('submit', this._formRender);
+        this._element.addEventListener('submit', (event)=>{
+            this._formRender(event);
+            this.close();          
+            this._element.reset();
+            });
     };
     close(){
         super.close();
-        //сброс формы добавления карточки
-        if(this._popupElement.id === 'add'){ 
-            const form = this._popupElement.querySelector('.popup__form');
-            form.reset();
-        }        
     };
 };

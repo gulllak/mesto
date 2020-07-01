@@ -41,3 +41,4 @@ export const validationConfig = {
   export const cardContainer = '.card-container';
   export const nameInput = document.querySelector('.popup__input_username');
   export const descriptionInput = document.querySelector('.popup__input_signature');
+  export const form = document.querySelector('.popup__form_card');

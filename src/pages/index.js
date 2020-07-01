@@ -8,24 +8,25 @@ import {
   popupAdd,
   cardContainer,
   nameInput,
-  descriptionInput} from '../utils/constants.js';
+  descriptionInput,
+  form} from '../utils/constants.js';
 import Section from '../components/Section.js';
 import Card from '../components/Card.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
+import {openImage} from '../utils/utils.js';
 
-const popupWithImage = new PopupWithImage('#image');
+
+export const popupWithImage = new PopupWithImage('#image');
 //карточки по умолчанию
 const cardList = new Section({
   items: initialCards.reverse(),
   renderer: (item) => {
     const card = new Card({
       data: item,
-      handleCardClick: ()=> {
-        popupWithImage.open(item)
-      }}, '#cards'
+      handleCardClick: ()=> openImage(item)}, '#cards'
       );
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
@@ -41,15 +42,13 @@ const createCard = new PopupWithForm({
   formSubmit: (item) => {
     const card = new Card({
       data: item,
-      handleCardClick: ()=> {
-        popupWithImage.open(item)
-      }}, '#cards'
+      handleCardClick: ()=> openImage(item)}, '#cards'
       );
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
   }
 }) 
-
+createCard.setEventListeners();
 //редактирование профиля
 const defaultUserInfo = new UserInfo('.profile__name', '.profile__signature');
 
@@ -59,13 +58,13 @@ const createProfile = new PopupWithForm({
     defaultUserInfo.setUserInfo(formData);
   }
 });
+createProfile.setEventListeners();
 
 const openProfileForm = () => {
   const infoProfile = defaultUserInfo.getUserInfo();
   nameInput.value = infoProfile.name;
   descriptionInput.value = infoProfile.description;    
   profileFormValidator.resetValidation();
-  createProfile.setEventListeners();
   createProfile.open()       
 }
 
@@ -79,9 +78,9 @@ function validation() {
 }
 validation();
 
-profileEditButton.addEventListener('click', ()=> openProfileForm());
+profileEditButton.addEventListener('click', openProfileForm);
 profileAddButton.addEventListener('click', () => {
   newCardFormValidator.resetValidation();
-  createCard.setEventListeners();
   createCard.open()
+  form.reset();
 });

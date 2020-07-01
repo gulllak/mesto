@@ -32,7 +32,6 @@ export default class FormValidator {
      this.submitButton.setAttribute('disabled', true);
      this.submitButton.classList.add(this._inactiveButtonClass);
 
-//
     if(this._form === document.querySelector('#edit')){
       this.submitButton.removeAttribute('disabled');
       this.submitButton.classList.remove(this._inactiveButtonClass);
